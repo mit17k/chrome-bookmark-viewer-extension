@@ -1,6 +1,6 @@
 {
   "name": "chrome-bookmark-viewer-extension",
-  "version": "3.2.1",
+  "version": "1.0.0",
   "description": "",
   "license": "MIT",
   "repository": {
@@ -8,13 +8,16 @@
     "url": "https://github.com/mit17k/chrome-bookmark-viewer-extension"
   },
   "scripts": {
-    "build": "node utils/build.js",
-    "start": "node utils/webserver.js",
+    "build": "bsb -make-world && node utils/build.js",
+    "start": "node ./node_modules/concurrently/bin/concurrently.js \"bsb -make-world -w\" \"node utils/webserver.js\" -c green,magenta",
     "prettier": "prettier --write '**/*.{js,jsx,css,html}'"
   },
   "dependencies": {
+    "@glennsl/bs-json": "^5.0.2",
     "@hot-loader/react-dom": "^17.0.1",
     "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/styles": "^4.11.2",
     "@types/chrome": "0.0.126",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
@@ -27,10 +30,13 @@
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.10",
     "@babel/preset-react": "^7.12.10",
+    "@babel/runtime": "^7.12.5",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-preset-react-app": "^10.0.0",
+    "bs-platform": "^8.4.2",
     "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^5.3.0",
     "copy-webpack-plugin": "^6.4.0",
     "css-loader": "^5.0.1",
     "eslint": "^7.15.0",
@@ -50,8 +56,6 @@
     "source-map-loader": "^1.1.3",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.0.3",
-    "ts-loader": "^8.0.12",
-    "typescript": "^4.1.3",
     "webpack": "^5.10.1",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0"
